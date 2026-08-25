@@ -14,7 +14,7 @@ export const Route = createFileRoute("/api/public/go")({
           headers: {
             Location: discordConfig().targetUrl,
             "Cache-Control": "no-store",
-            Referrer-Policy: "no-referrer",
+            "Referrer-Policy": "no-referrer",
           },
         });
       },
