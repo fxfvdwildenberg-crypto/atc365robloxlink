@@ -40,6 +40,17 @@ export const Route = createFileRoute("/api/public/discord/callback")({
         const { roleId } = discordConfig();
         const access = Boolean(roleId) && member.roles?.includes(roleId);
 
+        // Keep a role snapshot so the Roblox API can authorize the member later.
+        if (member.user?.id) {
+          try {
+            const { upsertRoleSnapshot } = await import("@/lib/atc365.server");
+            await upsertRoleSnapshot(member.user.id, member.roles ?? []);
+          } catch {
+            /* non-fatal */
+          }
+        }
+
+
         const session = signSession({
           id: member.user?.id ?? "unknown",
           username:

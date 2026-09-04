@@ -14,6 +14,8 @@ import { Route as ApiPublicGoRouteImport } from './routes/api/public/go'
 import { Route as ApiPublicDiscordCallbackRouteImport } from './routes/api/public/discord/callback'
 import { Route as ApiPublicDiscordLoginRouteImport } from './routes/api/public/discord/login'
 import { Route as ApiPublicDiscordLogoutRouteImport } from './routes/api/public/discord/logout'
+import { Route as ApiPublicRobloxCheckRouteImport } from './routes/api/public/roblox/check'
+import { Route as ApiPublicRobloxJoinRouteImport } from './routes/api/public/roblox/join'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,6 +43,16 @@ const ApiPublicDiscordLogoutRoute = ApiPublicDiscordLogoutRouteImport.update({
   path: '/api/public/discord/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicRobloxCheckRoute = ApiPublicRobloxCheckRouteImport.update({
+  id: '/api/public/roblox/check',
+  path: '/api/public/roblox/check',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicRobloxJoinRoute = ApiPublicRobloxJoinRouteImport.update({
+  id: '/api/public/roblox/join',
+  path: '/api/public/roblox/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -48,6 +60,8 @@ export interface FileRoutesByFullPath {
   '/api/public/discord/callback': typeof ApiPublicDiscordCallbackRoute
   '/api/public/discord/login': typeof ApiPublicDiscordLoginRoute
   '/api/public/discord/logout': typeof ApiPublicDiscordLogoutRoute
+  '/api/public/roblox/check': typeof ApiPublicRobloxCheckRoute
+  '/api/public/roblox/join': typeof ApiPublicRobloxJoinRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -55,6 +69,8 @@ export interface FileRoutesByTo {
   '/api/public/discord/callback': typeof ApiPublicDiscordCallbackRoute
   '/api/public/discord/login': typeof ApiPublicDiscordLoginRoute
   '/api/public/discord/logout': typeof ApiPublicDiscordLogoutRoute
+  '/api/public/roblox/check': typeof ApiPublicRobloxCheckRoute
+  '/api/public/roblox/join': typeof ApiPublicRobloxJoinRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -63,6 +79,8 @@ export interface FileRoutesById {
   '/api/public/discord/callback': typeof ApiPublicDiscordCallbackRoute
   '/api/public/discord/login': typeof ApiPublicDiscordLoginRoute
   '/api/public/discord/logout': typeof ApiPublicDiscordLogoutRoute
+  '/api/public/roblox/check': typeof ApiPublicRobloxCheckRoute
+  '/api/public/roblox/join': typeof ApiPublicRobloxJoinRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -72,6 +90,8 @@ export interface FileRouteTypes {
     | '/api/public/discord/callback'
     | '/api/public/discord/login'
     | '/api/public/discord/logout'
+    | '/api/public/roblox/check'
+    | '/api/public/roblox/join'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -79,6 +99,8 @@ export interface FileRouteTypes {
     | '/api/public/discord/callback'
     | '/api/public/discord/login'
     | '/api/public/discord/logout'
+    | '/api/public/roblox/check'
+    | '/api/public/roblox/join'
   id:
     | '__root__'
     | '/'
@@ -86,6 +108,8 @@ export interface FileRouteTypes {
     | '/api/public/discord/callback'
     | '/api/public/discord/login'
     | '/api/public/discord/logout'
+    | '/api/public/roblox/check'
+    | '/api/public/roblox/join'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +118,8 @@ export interface RootRouteChildren {
   ApiPublicDiscordCallbackRoute: typeof ApiPublicDiscordCallbackRoute
   ApiPublicDiscordLoginRoute: typeof ApiPublicDiscordLoginRoute
   ApiPublicDiscordLogoutRoute: typeof ApiPublicDiscordLogoutRoute
+  ApiPublicRobloxCheckRoute: typeof ApiPublicRobloxCheckRoute
+  ApiPublicRobloxJoinRoute: typeof ApiPublicRobloxJoinRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -133,6 +159,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicDiscordLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/roblox/check': {
+      id: '/api/public/roblox/check'
+      path: '/api/public/roblox/check'
+      fullPath: '/api/public/roblox/check'
+      preLoaderRoute: typeof ApiPublicRobloxCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/roblox/join': {
+      id: '/api/public/roblox/join'
+      path: '/api/public/roblox/join'
+      fullPath: '/api/public/roblox/join'
+      preLoaderRoute: typeof ApiPublicRobloxJoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -142,6 +182,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicDiscordCallbackRoute: ApiPublicDiscordCallbackRoute,
   ApiPublicDiscordLoginRoute: ApiPublicDiscordLoginRoute,
   ApiPublicDiscordLogoutRoute: ApiPublicDiscordLogoutRoute,
+  ApiPublicRobloxCheckRoute: ApiPublicRobloxCheckRoute,
+  ApiPublicRobloxJoinRoute: ApiPublicRobloxJoinRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
