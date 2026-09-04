@@ -14,13 +14,132 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      api_rate_limits: {
+        Row: {
+          bucket: string
+          hits: number
+          window_start: string
+        }
+        Insert: {
+          bucket: string
+          hits?: number
+          window_start?: string
+        }
+        Update: {
+          bucket?: string
+          hits?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
+      app_config: {
+        Row: {
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: string
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      discord_members: {
+        Row: {
+          discord_user_id: string
+          role_ids: string[]
+          updated_at: string
+        }
+        Insert: {
+          discord_user_id: string
+          role_ids?: string[]
+          updated_at?: string
+        }
+        Update: {
+          discord_user_id?: string
+          role_ids?: string[]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      roblox_accounts: {
+        Row: {
+          created_at: string
+          discord_user_id: string
+          id: string
+          roblox_user_id: number
+          roblox_username: string
+          updated_at: string
+          verified: boolean
+        }
+        Insert: {
+          created_at?: string
+          discord_user_id: string
+          id?: string
+          roblox_user_id: number
+          roblox_username: string
+          updated_at?: string
+          verified?: boolean
+        }
+        Update: {
+          created_at?: string
+          discord_user_id?: string
+          id?: string
+          roblox_user_id?: number
+          roblox_username?: string
+          updated_at?: string
+          verified?: boolean
+        }
+        Relationships: []
+      }
+      roblox_verifications: {
+        Row: {
+          code: string
+          consumed_at: string | null
+          created_at: string
+          discord_user_id: string
+          expires_at: string
+          id: string
+          roblox_user_id: number
+          roblox_username: string
+        }
+        Insert: {
+          code: string
+          consumed_at?: string | null
+          created_at?: string
+          discord_user_id: string
+          expires_at: string
+          id?: string
+          roblox_user_id: number
+          roblox_username: string
+        }
+        Update: {
+          code?: string
+          consumed_at?: string | null
+          created_at?: string
+          discord_user_id?: string
+          expires_at?: string
+          id?: string
+          roblox_user_id?: number
+          roblox_username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      rate_limit_hit: {
+        Args: { _bucket: string; _limit: number; _window_seconds: number }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
