@@ -13,6 +13,7 @@ import {
   Copy,
   Settings,
   CheckCircle2,
+  KeyRound,
 } from "lucide-react";
 import { getAccessState } from "@/lib/session.functions";
 import {
@@ -173,7 +174,11 @@ function Index() {
               ? "You are not a member of the ATC365 Discord server."
               : error === "signin"
                 ? "Please sign in with Discord first."
-                : "Verification failed. Please try signing in again."}
+                : error === "bad_code"
+                  ? "That access code is not valid."
+                  : error === "code_rate_limited"
+                    ? "Too many attempts. Please wait a few minutes and try again."
+                    : "Verification failed. Please try signing in again."}
           </p>
         ) : null}
       </section>
