@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicGoRouteImport } from './routes/api/public/go'
+import { Route as ApiPublicCodeLoginRouteImport } from './routes/api/public/code/login'
 import { Route as ApiPublicDiscordCallbackRouteImport } from './routes/api/public/discord/callback'
 import { Route as ApiPublicDiscordLoginRouteImport } from './routes/api/public/discord/login'
 import { Route as ApiPublicDiscordLogoutRouteImport } from './routes/api/public/discord/logout'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const ApiPublicGoRoute = ApiPublicGoRouteImport.update({
   id: '/api/public/go',
   path: '/api/public/go',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicCodeLoginRoute = ApiPublicCodeLoginRouteImport.update({
+  id: '/api/public/code/login',
+  path: '/api/public/code/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicDiscordCallbackRoute =
@@ -57,6 +63,7 @@ const ApiPublicRobloxJoinRoute = ApiPublicRobloxJoinRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/public/go': typeof ApiPublicGoRoute
+  '/api/public/code/login': typeof ApiPublicCodeLoginRoute
   '/api/public/discord/callback': typeof ApiPublicDiscordCallbackRoute
   '/api/public/discord/login': typeof ApiPublicDiscordLoginRoute
   '/api/public/discord/logout': typeof ApiPublicDiscordLogoutRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/public/go': typeof ApiPublicGoRoute
+  '/api/public/code/login': typeof ApiPublicCodeLoginRoute
   '/api/public/discord/callback': typeof ApiPublicDiscordCallbackRoute
   '/api/public/discord/login': typeof ApiPublicDiscordLoginRoute
   '/api/public/discord/logout': typeof ApiPublicDiscordLogoutRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/public/go': typeof ApiPublicGoRoute
+  '/api/public/code/login': typeof ApiPublicCodeLoginRoute
   '/api/public/discord/callback': typeof ApiPublicDiscordCallbackRoute
   '/api/public/discord/login': typeof ApiPublicDiscordLoginRoute
   '/api/public/discord/logout': typeof ApiPublicDiscordLogoutRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/api/public/go'
+    | '/api/public/code/login'
     | '/api/public/discord/callback'
     | '/api/public/discord/login'
     | '/api/public/discord/logout'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/api/public/go'
+    | '/api/public/code/login'
     | '/api/public/discord/callback'
     | '/api/public/discord/login'
     | '/api/public/discord/logout'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/api/public/go'
+    | '/api/public/code/login'
     | '/api/public/discord/callback'
     | '/api/public/discord/login'
     | '/api/public/discord/logout'
@@ -115,6 +127,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiPublicGoRoute: typeof ApiPublicGoRoute
+  ApiPublicCodeLoginRoute: typeof ApiPublicCodeLoginRoute
   ApiPublicDiscordCallbackRoute: typeof ApiPublicDiscordCallbackRoute
   ApiPublicDiscordLoginRoute: typeof ApiPublicDiscordLoginRoute
   ApiPublicDiscordLogoutRoute: typeof ApiPublicDiscordLogoutRoute
@@ -136,6 +149,13 @@ declare module '@tanstack/react-router' {
       path: '/api/public/go'
       fullPath: '/api/public/go'
       preLoaderRoute: typeof ApiPublicGoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/code/login': {
+      id: '/api/public/code/login'
+      path: '/api/public/code/login'
+      fullPath: '/api/public/code/login'
+      preLoaderRoute: typeof ApiPublicCodeLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/discord/callback': {
@@ -179,6 +199,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiPublicGoRoute: ApiPublicGoRoute,
+  ApiPublicCodeLoginRoute: ApiPublicCodeLoginRoute,
   ApiPublicDiscordCallbackRoute: ApiPublicDiscordCallbackRoute,
   ApiPublicDiscordLoginRoute: ApiPublicDiscordLoginRoute,
   ApiPublicDiscordLogoutRoute: ApiPublicDiscordLogoutRoute,
