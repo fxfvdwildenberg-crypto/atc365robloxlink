@@ -94,6 +94,34 @@ function Index() {
             >
               Continue with Discord
             </a>
+
+            <div className="flex items-center gap-3">
+              <span className="h-px flex-1 bg-border" />
+              <span className="mono-caps text-[10px] text-muted-foreground">or use an access code</span>
+              <span className="h-px flex-1 bg-border" />
+            </div>
+
+            <form method="post" action="/api/public/code/login" className="flex flex-col gap-2">
+              <label htmlFor="access-code" className="text-xs text-muted-foreground">
+                Access code
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="access-code"
+                  name="code"
+                  type="password"
+                  autoComplete="off"
+                  placeholder="Enter access code"
+                  className="h-11 flex-1 rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-secondary px-4 text-sm font-semibold text-secondary-foreground"
+                >
+                  <KeyRound className="size-4" /> Enter
+                </button>
+              </div>
+            </form>
           </div>
         ) : (
           <div className="flex flex-col gap-5">
