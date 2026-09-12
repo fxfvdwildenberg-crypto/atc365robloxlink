@@ -8,6 +8,13 @@
       "when": 1788538741816,
       "tag": "0000_atc365_roblox_linking",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789211798795,
+      "tag": "0001_harden_db_functions",
+      "breakpoints": true
     }
   ]
 }
