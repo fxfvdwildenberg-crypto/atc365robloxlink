@@ -17,12 +17,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sign in with Discord to verify your ATC365 server role, link your Roblox account and open the private members-only session.",
+          "Sign in with Discord to verify your ATC365 server role and open the private members-only session.",
       },
       { property: "og:title", content: "ATC365 — Members-Only Access Portal" },
       {
         property: "og:description",
-        content: "Role-verified Discord access to the private ATC365 session link and PTFS server.",
+        content: "Role-verified Discord access to the private ATC365 session link.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
