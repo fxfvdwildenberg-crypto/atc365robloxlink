@@ -1,29 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   ExternalLink,
   LogOut,
   ShieldCheck,
   ShieldAlert,
   Radar,
-  Gamepad2,
-  Link2,
-  Unlink,
-  Copy,
-  Settings,
-  CheckCircle2,
   KeyRound,
 } from "lucide-react";
 import { getAccessState } from "@/lib/session.functions";
-import {
-  getRobloxState,
-  startRobloxVerification,
-  confirmRobloxVerification,
-  unlinkRoblox,
-  getAdminConfig,
-  saveAdminConfig,
-} from "@/lib/roblox.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,11 +32,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type Mode = "direct" | "roblox";
-
 function Index() {
-  const [mode, setMode] = useState<Mode>("direct");
-
   const { data, isPending } = useQuery({
     queryKey: ["access-state"],
     queryFn: () => getAccessState(),
