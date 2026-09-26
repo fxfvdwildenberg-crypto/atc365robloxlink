@@ -107,42 +107,29 @@ function Index() {
           </div>
         ) : (
           <div className="flex flex-col gap-5">
-            <div className="grid grid-cols-2 gap-1 rounded-lg border border-border bg-background p-1">
-              <TabButton active={mode === "direct"} onClick={() => setMode("direct")}>
-                <ExternalLink className="size-4" /> Direct link
-              </TabButton>
-              <TabButton active={mode === "roblox"} onClick={() => setMode("roblox")}>
-                <Gamepad2 className="size-4" /> Roblox game
-              </TabButton>
-            </div>
-
-            {mode === "direct" ? (
-              data.access ? (
-                <>
-                  <StatusBlock
-                    tone="ok"
-                    title={`Clearance granted — ${data.username}`}
-                    body="Your role was verified. Use the button below to open the session; the URL stays hidden server-side."
-                  />
-                  <a
-                    href="/api/public/go"
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-primary text-lg font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
-                  >
-                    <ExternalLink className="size-5" />
-                    Open Link
-                  </a>
-                </>
-              ) : (
+            {data.access ? (
+              <>
                 <StatusBlock
-                  tone="deny"
-                  title="Access denied"
-                  body={`Signed in as ${data.username}, but you don't hold the required ATC365 role. Ask a staff member for access, then sign in again.`}
+                  tone="ok"
+                  title={`Clearance granted — ${data.username}`}
+                  body="Your role was verified. Use the button below to open the session; the URL stays hidden server-side."
                 />
-              )
+                <a
+                  href="/api/public/go"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-primary text-lg font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+                >
+                  <ExternalLink className="size-5" />
+                  Open Link
+                </a>
+              </>
             ) : (
-              <RobloxPanel />
+              <StatusBlock
+                tone="deny"
+                title="Access denied"
+                body={`Signed in as ${data.username}, but you don't hold the required ATC365 role. Ask a staff member for access, then sign in again.`}
+              />
             )}
 
             <SignOut />
